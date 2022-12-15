@@ -1,20 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import Login from './screens/Login';
+import Home from './screens/Home';
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Tabs(){
+	return(
+		<Tab.Navigator
+            screenOptions={{
+				headerShown: false,
+                tabBarActiveTintColor: '#22C55E',
+                tabBarInactiveTintColor: 'gray',
+                tabBarStyle: {
+					backgroundColor: '#27272A',
+					height: 60,
+					borderTopColor: '#22C55E',
+				},
+                tabBarLabelStyle: {
+					paddingBottom: 5
+				}
+            }}
+        >
+			<Tab.Screen name='Home' component={Home} />
+		</Tab.Navigator>
+	);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App(){
+  	return(
+		<NavigationContainer>
+			<StatusBar style='light' />
+			<Stack.Navigator
+				screenOptions={{
+					headerStyle: {
+						backgroundColor: '#27272A',
+					},
+					headerTintColor: '#fff',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+						fontSize: 25
+					},
+				}}
+			>
+				<Stack.Screen name='Login' component={Login} />
+				<Stack.Screen name='Statsfy' component={Tabs} />
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+}
