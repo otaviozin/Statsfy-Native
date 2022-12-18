@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ResponseType, useAuthRequest } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import config from '../config/credentials.json';
+import config from '../config/secret.json';
 
 export default function Login({ navigation }){
     const discovery = {
@@ -55,19 +55,41 @@ export default function Login({ navigation }){
 
 
 	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<TouchableOpacity onPress={() => promptAsync()}>
-				<View
-					style={{
-						backgroundColor: 'green',
-						padding: 20,
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<Text>Login</Text>
-				</View>
-			</TouchableOpacity>
+		<View style={{ backgroundColor: '#18181B', flex: 1 }}>
+			<Text
+				style={{
+					color: 'white',
+					fontSize: 25,
+					fontWeight: '900',
+					textAlign: 'center',
+					marginTop: 80
+				}}
+			>
+				Login with your Spotify account
+			</Text>
+			<View style={{ flex: 1, justifyContent: 'center' }}>
+				<TouchableOpacity onPress={() => promptAsync()}>
+					<View
+						style={{
+							backgroundColor: '#22C55E',
+							marginHorizontal: 90,
+							borderRadius: 3,
+							padding: 6
+						}}
+					>
+						<Text
+							style={{
+								color: 'white',
+								fontSize: 20,
+								fontWeight: '900',
+								textAlign: 'center'
+							}}
+						>
+							Login
+						</Text>
+					</View>
+				</TouchableOpacity>
+			</View>
 		</View>
 	);
 };

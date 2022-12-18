@@ -71,14 +71,20 @@ export default function Home({ navigation }){
     return(
         <View style={style.background}>
             <ScrollView contentContainerStyle={{paddingBottom: 40, paddingTop: 20}}>
+
+                {/* Top artists */}
                 <View>
                     <TouchableHighlight
-                        onPress={() => navigation.navigate('Login')}
+                        onPress={() => navigation.navigate('TopPage', {
+                            currentPage: 'Top artists',
+                            topArtistsData: topArtists,
+                            title: 'Top artistas'
+                        })}
                         style={{marginHorizontal: 5, borderRadius: 8}}
                     >
                         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text style={style.textTitle}>Top artistas</Text>
-                            <Text style={style.textTitle}>{'>'}</Text>
+                            <Text style={{ fontWeight: '300', fontSize: 25, color: 'white', marginRight: 25 }}>{'>'}</Text>
                         </View>
                     </TouchableHighlight>
                     <FlatList 
@@ -96,14 +102,20 @@ export default function Home({ navigation }){
                         )}
                     />
                 </View>
+
+                {/* Top tracks */}
                 <View>
                     <TouchableHighlight
-                        onPress={() => navigation.navigate('Login')}
+                        onPress={() => navigation.navigate('TopPage', {
+                            currentPage: 'Top tracks',
+                            topTracksData: topTracks,
+                            title: 'Top músicas'
+                        })}
                         style={{marginHorizontal: 5, borderRadius: 8}}
                     >
                         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text style={style.textTitle}>Top músicas</Text>
-                            <Text style={style.textTitle}>{'>'}</Text>
+                            <Text style={{ fontWeight: '300', fontSize: 25, color: 'white', marginRight: 25 }}>{'>'}</Text>
                         </View>
                     </TouchableHighlight>
                     <FlatList 
@@ -121,6 +133,8 @@ export default function Home({ navigation }){
                         )}
                     />
                 </View>
+
+                {/* Recent tracks */}
                 <View>
                     <TouchableHighlight
                         onPress={() => navigation.navigate('Login')}
@@ -128,7 +142,7 @@ export default function Home({ navigation }){
                     >
                         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text style={style.textTitle}>Músicas recentes</Text>
-                            <Text style={style.textTitle}>{'>'}</Text>
+                            <Text style={{ fontWeight: '300', fontSize: 25, color: 'white', marginRight: 25 }}>{'>'}</Text>
                         </View>
                     </TouchableHighlight>
                     <FlatList 

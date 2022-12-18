@@ -4,7 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Login from './screens/Login';
+
+// Tab pages
 import Home from './screens/Home';
+
+// Stack pages
+import TopPage from './screens/TopPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -48,6 +53,7 @@ export default function App(){
 				}}
 			>
 				<Stack.Screen name='Login' component={Login} />
+				<Stack.Screen name='TopPage' options={({route}) => ({title: route.params.title})} component={TopPage} />
 				<Stack.Screen name='Statsfy' component={Tabs} />
 			</Stack.Navigator>
 		</NavigationContainer>
